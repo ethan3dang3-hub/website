@@ -1,573 +1,1036 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ACOM360 | Student Portfolio Template</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ethan Dang — Criminal Justice, Communications, and Cybersecurity portfolio.">
+  <title>Ethan Dang | Portfolio</title>
 
-    <style>
-        /* --- DESIGN STYLES (CSS) --- */
-        
-        :root {
-            --bg-dark: #111111;
-            --bg-card: #1a1a1a;
-            --text-light: #ffffff;
-            --text-muted: #a0a0a0;
-            --accent-color: #C4A052; /* Earth Yellow */
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
 
-            /* Custom colors for the Featured Works cards */
-            --card-1: #8CC63F; /* Lime Green */
-            --card-2: #008C95; /* Teal */
-            --card-3: #3CB371; /* Forest Green */
-            --card-4: #C4A052; /* Earth Yellow */
-            
-            /* This is the magic formula that perfectly constrains the width! */
-            --edge-padding: max(5%, calc((100% - 1100px) / 2));
-        }
+    :root {
+      --navy: #07172d;
+      --navy-2: #0b203b;
+      --ink: #080b11;
+      --panel: #11151d;
+      --paper: #f3f4f5;
+      --white: #fff;
+      --muted: #aeb8c6;
+      --red: #e32636;
+      --line: rgba(255,255,255,.14);
+      --max: 1180px;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-        }
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: var(--white);
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.55;
+    }
 
-        h1, h2, h3, .logo {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-        }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; object-fit: cover; }
 
-        /* Navigation Bar */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem var(--edge-padding); 
-            background-color: rgba(17, 17, 17, 0.95);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(51, 51, 51, 0.5);
-        }
+    .wrap {
+      width: min(var(--max), calc(100% - 44px));
+      margin-inline: auto;
+    }
 
-        .logo {
-            font-size: 1.8rem;
-            letter-spacing: 2px;
-            color: var(--text-light);
-            text-decoration: none;
-        }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #d7dfeb;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background: var(--red);
+    }
 
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
+    h1, h2, h3, .brand, .nav a, .button, .card-kicker {
+      font-family: "Barlow Condensed", Impact, sans-serif;
+      text-transform: uppercase;
+    }
 
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
+    h1, h2, h3, p { margin-top: 0; }
 
-        /* Dark Gray Divider Lines between sections */
-        header, section {
-            border-bottom: 1px solid #333;
-        }
+    h2 {
+      font-size: clamp(2.1rem, 5vw, 3.5rem);
+      line-height: .98;
+      letter-spacing: -.02em;
+      margin-bottom: 22px;
+    }
 
-/* Hero Section */
-        header {
-            height: 60vh;
-            position: relative;
-            overflow: hidden; 
-            margin-top: 85px;
-            background-color: #222222;
-        }
+    .section { padding: 88px 0; }
 
-        /* The Background Image */
-        .hero-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; 
-            object-position: center 65%; /* Adjust this percentage to change the crop! */
-            z-index: 1;
-        }
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 30px;
+    }
 
-        /* Introduction Section */
-        .intro-section {
-            padding: 3rem var(--edge-padding); 
-            background-color: var(--bg-dark);
-            text-align: left;
-        }
+    .section-heading p {
+      max-width: 420px;
+      color: var(--muted);
+      margin: 0;
+      font-size: .9rem;
+    }
 
-        .intro-text-container {
-            width: 100%;
-        }
+    /* HEADER — CHANGE YOUR NAME AND INITIALS HERE. */
 
-        .intro-text-container h2 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-color);
-        }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(5, 17, 34, .96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
 
-        .intro-text-container p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
 
-        /* About Section (Digital Avatar) */
-        .about-section {
-            padding: 4rem var(--edge-padding);
-        }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.18rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+    }
 
-        .about-card {
-            background-color: var(--bg-card);
-            padding: 0; 
-            border-radius: 4px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0; 
-            align-items: stretch;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.55);
+      border-radius: 50%;
+      color: white;
+      font-family: Inter, sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+    }
 
-        .about-card:hover {
-            background-color: var(--accent-color);
-        }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
 
-        .about-text {
-            padding: 4rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+    .nav a {
+      font-size: .9rem;
+      letter-spacing: .08em;
+      color: #dce4ef;
+      transition: color .2s;
+    }
 
-        .about-text h2 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-color);
-            transition: color 0.4s ease;
-        }
+    .nav a:hover { color: #ff5865; }
 
-        .about-text p {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: var(--text-muted);
-            transition: color 0.4s ease;
-        }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--line);
+      color: white;
+      padding: 9px 12px;
+    }
 
-        .about-card:hover .about-text h2,
-        .about-card:hover .about-text p {
-            color: var(--bg-dark);
-        }
+    /* HERO — REPLACE THE BACKGROUND IMAGE URL AND YOUR INTRODUCTION. */
 
-        /* Updated About Video Section to handle Images */
-        .about-video {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
+    .hero {
+      min-height: 640px;
+      display: flex;
+      align-items: end;
+      position: relative;
+      isolation: isolate;
 
-        .about-video a {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
+      background:
+        linear-gradient(90deg, rgba(3,10,20,.94) 0%, rgba(3,10,20,.68) 48%, rgba(3,10,20,.08) 100%),
+        linear-gradient(0deg, rgba(3,10,20,.85), transparent 55%),
+        url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2200&q=85") center/cover;
+    }
 
-        .about-video img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: opacity 0.3s ease;
-        }
-        
-        .about-video a:hover img {
-            opacity: 0.9;
-        }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(circle at 75% 35%, transparent 0, rgba(0,0,0,.12) 50%, rgba(0,0,0,.28) 100%);
+    }
 
-        /* Portfolio Grid Sections */
-        .portfolio-section {
-            padding: 6rem var(--edge-padding);
-        }
+    .hero-content {
+      padding: 105px 0 88px;
+      max-width: 710px;
+    }
 
-        .portfolio-section h2 {
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            text-align: left;
-            color: var(--accent-color);
-        }
+    .hero h1 {
+      font-size: clamp(3.5rem, 9vw, 7.4rem);
+      line-height: .82;
+      letter-spacing: -.025em;
+      margin: 20px 0 26px;
+    }
 
-        /* Original 3-Column Layout */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+    .hero h1 span { color: var(--red); }
 
-        /* 4-Column Layout for Posters */
-        .grid-container-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
+    .hero-copy {
+      max-width: 570px;
+      color: #e1e6ed;
+      font-size: 1rem;
+    }
 
-        /* The Cards */
-        .grid-item {
-            background-color: var(--bg-card);
-            border-radius: 4px;
-            overflow: hidden;
-            transition: all 0.4s ease; 
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            text-decoration: none; 
-            cursor: pointer;
-        }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
 
-        /* Specific Hover Colors */
-        .item-1 { --hover-bg: var(--card-1); border-bottom: 3px solid var(--card-1); }
-        .item-2 { --hover-bg: var(--card-2); border-bottom: 3px solid var(--card-2); }
-        .item-3 { --hover-bg: var(--card-3); border-bottom: 3px solid var(--card-3); }
-        .item-4 { --hover-bg: var(--card-4); border-bottom: 3px solid var(--card-4); }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 13px 20px;
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      border: 1px solid transparent;
+    }
 
-        .grid-item-content {
-            padding: 1.5rem; 
-        }
+    .button.primary { background: var(--red); color: white; }
+    .button.primary:hover { background: #bd1c2a; }
+    .button.outline { border-color: rgba(255,255,255,.55); }
+    .button.outline:hover {
+      background: white;
+      color: var(--ink);
+    }
 
-        .grid-item-content h3 {
-            font-size: 1.6rem; 
-            margin-bottom: 0.5rem;
-            color: var(--text-light);
-            transition: color 0.4s ease;
-        }
+    /* EDUCATION STRIP */
 
-        .grid-item-content p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            transition: color 0.4s ease;
-        }
+    .intro-strip {
+      background: var(--navy);
+      border-block: 1px solid rgba(255,255,255,.1);
+    }
 
-        /* Media styling for 16:9 Video Feature Pictures */
-        .grid-item img.video-thumbnail {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+    }
 
-        /* Media styling for Vertical Posters */
-        .grid-item img.poster-img {
-            width: 100%;
-            height: 400px; 
-            object-fit: cover;
-            object-position: top; 
-        }
+    .intro-item {
+      padding: 25px 28px;
+      border-right: 1px solid var(--line);
+    }
 
-        /* THE HOVER MAGIC FOR CARDS */
-        .grid-item:hover {
-            transform: translateY(-10px);
-            background-color: var(--hover-bg); 
-        }
+    .intro-item:first-child { padding-left: 0; }
+    .intro-item:last-child { border: 0; }
 
-        .grid-item:hover .grid-item-content h3,
-        .grid-item:hover .grid-item-content p {
-            color: var(--bg-dark);
-        }
+    .intro-item strong {
+      display: block;
+      font-family: "Barlow Condensed";
+      font-size: 1.35rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 3rem var(--edge-padding); 
-            background-color: #000;
-        }
+    .intro-item span {
+      color: var(--muted);
+      font-size: .78rem;
+    }
 
-        /* Footer Links Styling */
-        .footer-links {
-            margin-top: 1.5rem;
-            margin-bottom: 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
+    /* FEATURED WORK — DUPLICATE A FEATURE CARD TO ADD MORE. */
 
-        .footer-links a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
-        }
+    .featured { background: #090d14; }
 
-        .footer-links a:hover {
-            color: var(--text-light);
-        }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr 1fr;
+      gap: 18px;
+    }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .grid-container-4 {
-                grid-template-columns: repeat(2, 1fr); 
-            }
-        }
+    .feature-card {
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+      background: #171d27;
+    }
 
-        @media (max-width: 768px) {
-            .about-card {
-                grid-template-columns: 1fr;
-            }
-            .about-text {
-                padding: 2rem;
-            }
-            .nav-links {
-                display: none;
-            }
-            .grid-container-4 {
-                grid-template-columns: 1fr; 
-            }
-            .footer-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
+    .feature-card img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      transition: transform .5s;
+    }
+
+    .feature-card:hover img { transform: scale(1.045); }
+
+    .feature-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,.92), rgba(0,0,0,.05) 75%);
+    }
+
+    .feature-copy {
+      position: absolute;
+      z-index: 1;
+      left: 24px;
+      right: 24px;
+      bottom: 23px;
+    }
+
+    .card-kicker {
+      color: #ff6974;
+      font-size: .72rem;
+      letter-spacing: .16em;
+      font-weight: 700;
+    }
+
+    .feature-copy h3 {
+      font-size: 1.8rem;
+      line-height: .98;
+      margin: 9px 0;
+    }
+
+    .feature-copy p {
+      color: #d3d9e2;
+      font-size: .8rem;
+      margin: 0;
+      max-width: 440px;
+    }
+
+    /* ABOUT ME */
+
+    .about {
+      background: var(--paper);
+      color: #111722;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .about-image {
+      min-height: 470px;
+      position: relative;
+      background: #cbd2db;
+    }
+
+    .about-image img { height: 470px; }
+
+    .about-image::after {
+      content: "";
+      position: absolute;
+      width: 45%;
+      height: 45%;
+      right: -14px;
+      bottom: -14px;
+      border-right: 5px solid var(--red);
+      border-bottom: 5px solid var(--red);
+      pointer-events: none;
+    }
+
+    .about .eyebrow { color: #4d5968; }
+    .about-copy p { color: #4b5563; }
+    .about-copy .button { margin-top: 12px; }
+
+    /* PROJECTS — CHANGE THE IMAGES, TITLES, DESCRIPTIONS, AND LINKS. */
+
+    .projects { background: #0b0e14; }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+    }
+
+    .project-card {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .project-card img {
+      height: 215px;
+      filter: saturate(.78);
+    }
+
+    .project-body { padding: 22px; }
+
+    .project-body h3 {
+      font-size: 1.55rem;
+      margin: 8px 0;
+    }
+
+    .project-body p {
+      color: var(--muted);
+      font-size: .84rem;
+      min-height: 68px;
+    }
+
+    .text-link {
+      color: white;
+      font-family: "Barlow Condensed";
+      font-size: .95rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 4px;
+    }
+
+    /* SKILLS */
+
+    .skills { background: #101a2a; }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .skill {
+      background: #101a2a;
+      padding: 25px;
+    }
+
+    .skill-number {
+      color: var(--red);
+      font-family: "Barlow Condensed";
+      font-size: 1.1rem;
+    }
+
+    .skill h3 {
+      font-size: 1.35rem;
+      margin: 9px 0;
+    }
+
+    .skill p {
+      color: var(--muted);
+      font-size: .8rem;
+      margin: 0;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      background: var(--paper);
+      color: #101722;
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 40px;
+      align-items: center;
+      padding: 52px;
+      background: white;
+      border-left: 5px solid var(--red);
+    }
+
+    .contact p {
+      color: #596372;
+      max-width: 550px;
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 12px;
+      font-size: .9rem;
+    }
+
+    .contact-details a {
+      color: #172235;
+      border-bottom: 1px solid #d7dce2;
+      padding-bottom: 9px;
+      overflow-wrap: anywhere;
+    }
+
+    .contact .eyebrow { color: #596372; }
+
+    /* FOOTER */
+
+    footer {
+      background: #050b14;
+      padding: 38px 0;
+      color: #aab4c2;
+      font-size: .75rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    /* RESPONSIVE DESIGN */
+
+    @media (max-width: 800px) {
+      .nav {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        padding: 22px;
+        background: #07172d;
+        flex-direction: column;
+        align-items: flex-start;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav.open { display: flex; }
+      .menu-toggle { display: block; }
+
+      .hero {
+        min-height: 590px;
+        background-position: 58% center;
+      }
+
+      .feature-grid { grid-template-columns: 1fr 1fr; }
+
+      .feature-card:first-child { grid-column: 1 / -1; }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      .about-image,
+      .about-image img {
+        min-height: 320px;
+        height: 320px;
+      }
+
+      .project-grid { grid-template-columns: 1fr 1fr; }
+      .skill-grid { grid-template-columns: 1fr 1fr; }
+      .contact-panel { grid-template-columns: 1fr; padding: 34px; }
+    }
+
+    @media (max-width: 540px) {
+      .wrap { width: min(100% - 30px, var(--max)); }
+      .section { padding: 64px 0; }
+      .hero { min-height: 560px; }
+      .hero-content { padding: 80px 0 62px; }
+
+      .intro-grid { grid-template-columns: 1fr; }
+
+      .intro-item,
+      .intro-item:first-child {
+        padding: 17px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .intro-item:last-child { border-bottom: 0; }
+
+      .section-heading { display: block; }
+      .section-heading p { margin-top: 12px; }
+
+      .feature-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card:first-child { grid-column: auto; }
+      .feature-card { min-height: 300px; }
+
+      .skill-grid { grid-template-columns: 1fr 1fr; }
+      .skill { padding: 17px; }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
-<!-- ACOM360 STUDENT TEMPLATE: All original image src paths are preserved.
-     Every clickable portfolio image or card links to the ACOM360 YouTube channel.
-     Keep the original images/ folder beside this HTML file to display the images. -->
+
 <body>
 
-    <nav>
-        <a href="#" class="logo">ACOM360 Portfolio Template</a>
-        <ul class="nav-links">
-            <li><a href="#introduction">About</a></li>
-            <li><a href="#portfolio">Exhibitions</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+  <!-- ================= HEADER ================= -->
 
-<header>
-        <img class="hero-image" src="images/hero-picture.jpg" alt="Portfolio banner image">
-    </header>
+  <header class="site-header">
+    <div class="wrap header-inner">
 
-    <section id="introduction" class="intro-section">
-        <div class="intro-text-container">
-            <h2>About This Portfolio</h2>
-            <p>Welcome to the ACOM360 student portfolio template. Replace this introduction with a brief description of your interests, creative goals, and the work you want to highlight.</p>
-            <p>Use this paragraph to describe your skills, your role in selected projects, and what you learned. Keep the information professional and avoid publishing private contact details.</p>
+      <!-- CHANGE YOUR INITIALS AND NAME HERE. -->
+      <a class="brand" href="#top" aria-label="Ethan Dang home">
+        <span class="brand-mark">ED</span>
+        <span>ETHAN DANG</span>
+      </a>
+
+      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">
+        MENU
+      </button>
+
+      <nav class="nav" id="site-nav">
+        <a href="#about">About</a>
+        <a href="#work">Featured Work</a>
+        <a href="#skills">Focus Areas</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <section class="hero">
+      <div class="wrap hero-content">
+
+        <div class="eyebrow">Student · Researcher · Future Attorney</div>
+
+        <!-- EDIT YOUR MAIN HEADLINE HERE. -->
+        <h1>
+          Curious by<br>
+          nature. <span>Driven</span><br>
+          by purpose.
+        </h1>
+
+        <!-- PASTE YOUR SHORT INTRODUCTION HERE. -->
+        <p class="hero-copy">
+          I’m Ethan Dang, a Criminal Justice student at the University at Albany
+          with interests in communications, cybersecurity, and the legal system.
+          I’m focused on asking better questions, solving complex problems,
+          and turning what I learn into meaningful work.
+        </p>
+
+        <div class="actions">
+          <a class="button primary" href="#work">
+            Explore my work <span>↗</span>
+          </a>
+
+          <a class="button outline" href="#contact">
+            Get in touch
+          </a>
         </div>
+
+      </div>
     </section>
 
-    <section id="about" class="about-section">
-        <div class="about-card">
-            <div class="about-text">
-                <h2>Digital Avatar</h2>
-                <p>Example project: describe the tools, creative process, and your contributions here. The original image is retained for this template.</p>
+    <!-- ================= EDUCATION STRIP ================= -->
+
+    <section class="intro-strip">
+      <div class="wrap intro-grid">
+
+        <div class="intro-item">
+          <strong>University at Albany</strong>
+          <span>Education · New York</span>
+        </div>
+
+        <div class="intro-item">
+          <strong>Criminal Justice</strong>
+          <span>Major / Academic focus</span>
+        </div>
+
+        <div class="intro-item">
+          <strong>Communications + Cybersecurity</strong>
+          <span>Double minor · Interdisciplinary interests</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= FEATURED WORK ================= -->
+
+    <section class="section featured" id="work">
+      <div class="wrap">
+
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">Selected highlights</div>
+            <h2>Featured work</h2>
+          </div>
+
+          <p>
+            A selection of academic projects, research, and ideas that reflect
+            the questions I’m interested in exploring.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+
+          <!-- FEATURE CARD 1: REPLACE IMAGE URL, TITLE, AND DESCRIPTION. -->
+          <a class="feature-card" href="#projects">
+            <img
+              src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1100&q=85"
+              alt="Law books and legal research"
+            >
+
+            <div class="feature-copy">
+              <div class="card-kicker">Criminal Justice</div>
+              <h3>Justice, access & the right to counsel</h3>
+              <p>
+                Exploring how legal institutions, policy, and access to
+                representation shape people's experiences of the justice system.
+              </p>
             </div>
-            <div class="about-video">
-                <a href="https://www.youtube.com/@acom360-k8" target="_blank" rel="noopener noreferrer">
-                    <img src="images/potfolio.png" alt="Digital Avatar Thumbnail">
-                </a>
+          </a>
+
+          <!-- FEATURE CARD 2: REPLACE IMAGE URL, TITLE, AND DESCRIPTION. -->
+          <a class="feature-card" href="#projects">
+            <img
+              src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=85"
+              alt="Cybersecurity technology visual"
+            >
+
+            <div class="feature-copy">
+              <div class="card-kicker">Cybersecurity</div>
+              <h3>Security in a connected world</h3>
+              <p>
+                Researching digital threats, risk, and practical ways
+                organizations can protect critical information and systems.
+              </p>
             </div>
+          </a>
+
+          <!-- FEATURE CARD 3: REPLACE IMAGE URL, TITLE, AND DESCRIPTION. -->
+          <a class="feature-card" href="#projects">
+            <img
+              src="https://images.unsplash.com/photo-1455390582262-044cadded277?auto=format&fit=crop&w=900&q=85"
+              alt="Notebook and pen on a desk"
+            >
+
+            <div class="feature-copy">
+              <div class="card-kicker">Communication</div>
+              <h3>Ideas made clear</h3>
+              <p>
+                Connecting research and storytelling through writing,
+                media, and thoughtful communication.
+              </p>
+            </div>
+          </a>
+
         </div>
+      </div>
     </section>
 
-    <section id="portfolio" class="portfolio-section">
-        <h2>AI-Powered Documentaries</h2>
-   
-        <div class="grid-container">
-            <a href="https://www.youtube.com/@acom360-k8" target="_blank" rel="noopener noreferrer" class="grid-item item-1">
-                <div class="grid-item-content">
-                    <h3>The Rational Illusion</h3>
-                    <p>Sample project description. Replace with your project credits, production tools, and creative contributions.</p>
-                </div>
-                <img src="images/docpic.png" alt="The Rational Illusion" class="video-thumbnail">
-            </a>
+    <!-- ================= ABOUT ME ================= -->
 
-            <a href="https://www.youtube.com/@acom360-k8" target="_blank" rel="noopener noreferrer" class="grid-item item-2">
-                <div class="grid-item-content">
-                    <h3>Course Introduction</h3>
-                    <p>Sample project description. Explain the concept, production process, and tools used.</p>
-                </div>
-                <img src="images/picavatar.png" alt="Course Introduction" class="video-thumbnail">
-            </a>
+    <section class="section about" id="about">
+      <div class="wrap about-grid">
 
-            <a href="https://www.youtube.com/@acom360-k8" target="_blank" rel="noopener noreferrer" class="grid-item item-3">
-                <div class="grid-item-content">
-                    <h3>Self Introduction</h3>
-                    <p>Sample project description. Explain the concept, production process, and tools used.</p>
-                </div>
-                <img src="images/potfolio.png" alt="Self Introduction" class="video-thumbnail">
-            </a>
+        <div class="about-image">
+
+          <!-- REPLACE THIS IMAGE URL WITH YOUR OWN PHOTO. -->
+          <img
+            src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1000&q=85"
+            alt="Collaborative workspace"
+          >
+
         </div>
+
+        <div class="about-copy">
+
+          <div class="eyebrow">A little about me</div>
+
+          <h2>
+            Different perspectives.<br>
+            One direction.
+          </h2>
+
+          <!-- REPLACE THIS PARAGRAPH WITH YOUR PERSONAL BIO. -->
+          <p>
+            I’m currently pursuing a degree in Criminal Justice at the
+            University at Albany, alongside minors in Communications and
+            Cybersecurity. Studying these areas together has helped me look
+            at problems from multiple angles: how systems work, how people
+            interact with them, and how technology changes the challenges we face.
+          </p>
+
+          <!-- REPLACE THIS PARAGRAPH WITH YOUR PERSONAL DETAILS OR CAREER GOAL. -->
+          <p>
+            My long-term goal is to continue my education and pursue a career
+            in law. I’m especially interested in work that combines careful
+            research, critical thinking, and a commitment to understanding
+            the people behind the issues.
+          </p>
+
+          <a class="button primary" href="#contact">
+            Connect with me ↗
+          </a>
+
+        </div>
+      </div>
     </section>
 
-    <section id="campaigns" class="portfolio-section">
-        <h2>Campaign Teasers</h2>
-   
-        <div class="grid-container">
-            <a href="https://www.youtube.com/@acom360-k8" target="_blank" rel="noopener noreferrer" class="grid-item item-1">
-                <div class="grid-item-content">
-                    <h3>World News Day</h3>
-                    <p>This teaser kicks off our participation in World News Day 2026, a global celebration of fact‑based journalism, now in its 8th year.</p>
-                </div>
-                <img src="images/worldpic.png" alt="World News Day" class="video-thumbnail">
-            </a>
+    <!-- ================= PROJECTS ================= -->
 
-            <a href="https://www.youtube.com/@acom360-k8" target="_blank" rel="noopener noreferrer" class="grid-item item-2">
-                <div class="grid-item-content">
-                    <h3>Local News Heroes</h3>
-                    <p>This is a social media campaign in response to the Local News Crisis. Students produced a series of five 30-second short videos in collaboration with local news outlets in Albany.</p>
-                </div>
-                <img src="images/localnewspic.png" alt="Local News Heroes" class="video-thumbnail">
-            </a>
+    <section class="section projects" id="projects">
+      <div class="wrap">
 
-            <a href="https://www.youtube.com/@acom360-k8" target="_blank" rel="noopener noreferrer" class="grid-item item-3">
-                <div class="grid-item-content">
-                    <h3>Dialogue 360</h3>
-                    <p>This is a student-led interview series where we sit down with professors, students, and educators to explore the big questions shaping university life today.</p>
-                </div>
-                <img src="images/360.png" alt="Dialogue 360" class="video-thumbnail">
-            </a>
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">The work behind the ideas</div>
+            <h2>Projects & research</h2>
+          </div>
+
+          <p>
+            Use this section to showcase class projects, papers,
+            presentations, creative work, internships, or independent research.
+          </p>
         </div>
+
+        <div class="project-grid">
+
+          <!-- PROJECT 1: REPLACE IMAGE, TITLE, DESCRIPTION, AND LINK. -->
+          <article class="project-card">
+
+            <img
+              src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=900&q=85"
+              alt="Law library shelves"
+            >
+
+            <div class="project-body">
+              <div class="card-kicker">Research · Criminal Justice</div>
+
+              <h3>Right to Counsel</h3>
+
+              <p>
+                A research project examining the Sixth Amendment, public
+                defense, and the importance of meaningful access to legal
+                representation.
+              </p>
+
+              <a class="text-link" href="#contact">View project ↗</a>
+            </div>
+          </article>
+
+          <!-- PROJECT 2: REPLACE IMAGE, TITLE, DESCRIPTION, AND LINK. -->
+          <article class="project-card">
+
+            <img
+              src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=900&q=85"
+              alt="Computer workstation"
+            >
+
+            <div class="project-body">
+              <div class="card-kicker">Analysis · Cybersecurity</div>
+
+              <h3>Cyber Risk & Resilience</h3>
+
+              <p>
+                Analyzing organizational vulnerabilities, threat actors,
+                and defensive strategies for protecting essential systems
+                and data.
+              </p>
+
+              <a class="text-link" href="#contact">View project ↗</a>
+            </div>
+          </article>
+
+          <!-- PROJECT 3: REPLACE IMAGE, TITLE, DESCRIPTION, AND LINK. -->
+          <article class="project-card">
+
+            <img
+              src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=900&q=85"
+              alt="Writing and planning desk"
+            >
+
+            <div class="project-body">
+              <div class="card-kicker">Writing · Communications</div>
+
+              <h3>Research into storytelling</h3>
+
+              <p>
+                Developing clear, audience-focused writing that makes
+                complex subjects accessible, engaging, and useful.
+              </p>
+
+              <a class="text-link" href="#contact">View project ↗</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
     </section>
 
-    <section id="commercials" class="portfolio-section">
-        <h2>Commercial Showcase</h2>
-   
-        <div class="grid-container">
-            <a href="https://www.youtube.com/@acom360-k8" target="_blank" rel="noopener noreferrer" class="grid-item item-1">
-                <div class="grid-item-content">
-                    <h3>Deep Blue Center</h3>
-                    <p>U-shaped screen ultrawide video sample, Qingdao (for educational use only). Concept: Landmark Strategy — German planning DNA &times; Chinese context.</p>
-                </div>
-                <img src="images/deepblue.png" alt="Deep Blue Center" class="video-thumbnail">
-            </a>
+    <!-- ================= SKILLS ================= -->
 
-            <a href="https://www.youtube.com/@acom360-k8" target="_blank" rel="noopener noreferrer" class="grid-item item-2">
-                <div class="grid-item-content">
-                    <h3>Xiamen Cadaqués</h3>
-                    <p>Dali-Inspired Seaside Community, Xiamen (for educational use only). Concept: Merging surrealism (dream, time, sea motifs) with Spanish-style real estate marketing.</p>
-                </div>
-                <img src="images/kadapic.png" alt="Xiamen Cadaqués" class="video-thumbnail">
-            </a>
+    <section class="section skills" id="skills">
+      <div class="wrap">
 
-            <a href="https://www.youtube.com/@acom360-k8" target="_blank" rel="noopener noreferrer" class="grid-item item-3">
-                <div class="grid-item-content">
-                    <h3>Lavie Town</h3>
-                    <p>Nostalgic Film Creative Cluster, Qingdao (for educational use only). Concept: A living archive of 20th-century cinema languages, where art deco façades meet digital content hubs.</p>
-                </div>
-                <img src="images/lavie.png" alt="Lavie Town" class="video-thumbnail">
-            </a>
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">What I bring to the table</div>
+            <h2>Areas of focus</h2>
+          </div>
+
+          <p>
+            Edit these categories to reflect your strongest skills,
+            interests, and the areas you want people to associate with your work.
+          </p>
         </div>
+
+        <div class="skill-grid">
+
+          <div class="skill">
+            <div class="skill-number">01 / JUSTICE</div>
+            <h3>Legal research</h3>
+            <p>Criminal justice policy, legal institutions, and constitutional issues.</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-number">02 / SECURITY</div>
+            <h3>Cybersecurity</h3>
+            <p>Risk assessment, information security, and digital threats.</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-number">03 / COMMUNICATION</div>
+            <h3>Writing & media</h3>
+            <p>Research writing, audience awareness, and visual communication.</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-number">04 / THINKING</div>
+            <h3>Critical analysis</h3>
+            <p>Evaluating evidence, identifying patterns, and solving problems.</p>
+          </div>
+
+        </div>
+      </div>
     </section>
 
-    <section id="posters-1" class="portfolio-section">
-        <h2>Poster Showcase I</h2>
-   
-        <div class="grid-container-4">
-            <a href="images/005.jpg" target="_blank" rel="noopener noreferrer" class="grid-item item-1">
-                <div class="grid-item-content">
-                    <h3>Death of Ji Kang</h3>
-                    <p>A Contemporary Dance Theater Performance (2008, Shenzhen OCT)</p>
-                </div>
-                <img src="images/005.jpg" alt="Death of Ji Kang" class="poster-img">
-            </a>
+    <!-- ================= CONTACT ================= -->
 
-            <a href="images/006.jpg" target="_blank" rel="noopener noreferrer" class="grid-item item-2">
-                <div class="grid-item-content">
-                    <h3>Prose China (1)</h3>
-                    <p>Shenzhen Book Fair Poster 1 (2009, Shenzhen)</p>
-                </div>
-                <img src="images/006.jpg" alt="Prose China (1)" class="poster-img">
-            </a>
+    <section class="section contact" id="contact">
+      <div class="wrap contact-panel">
 
-            <a href="images/007.jpg" target="_blank" rel="noopener noreferrer" class="grid-item item-3">
-                <div class="grid-item-content">
-                    <h3>Prose China (2)</h3>
-                    <p>Shenzhen Book Fair Poster 2 (2009, Shenzhen)</p>
-                </div>
-                <img src="images/007.jpg" alt="Prose China (2)" class="poster-img">
-            </a>
+        <div>
+          <div class="eyebrow">Have a question or opportunity?</div>
 
-            <a href="images/008.jpg" target="_blank" rel="noopener noreferrer" class="grid-item item-4">
-                <div class="grid-item-content">
-                    <h3>Pathway to Heart</h3>
-                    <p>Literary Works Poster 1</p>
-                </div>
-                <img src="images/008.jpg" alt="Pathway to Heart" class="poster-img">
-            </a>
+          <h2>Let's start a conversation.</h2>
+
+          <!-- EDIT THIS CONTACT MESSAGE. -->
+          <p>
+            I’m always interested in connecting with people working across
+            criminal justice, law, communications, and technology.
+            Feel free to reach out.
+          </p>
+
+          <!-- REPLACE WITH YOUR ACTUAL EMAIL ADDRESS. -->
+          <a class="button primary" href="mailto:YOUR_EMAIL@example.com">
+            Email me ↗
+          </a>
         </div>
+
+        <div class="contact-details">
+
+          <!-- REPLACE THESE LINKS WITH YOUR OWN INFORMATION. -->
+
+          <a href="mailto:YOUR_EMAIL@example.com">
+            YOUR_EMAIL@example.com
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/YOUR-LINKEDIN/"
+            target="_blank"
+            rel="noopener"
+          >
+            LinkedIn ↗
+          </a>
+
+          <a
+            href="https://github.com/YOUR-USERNAME"
+            target="_blank"
+            rel="noopener"
+          >
+            GitHub ↗
+          </a>
+
+          <a href="#contact">
+            Resume / CV ↗
+          </a>
+
+        </div>
+      </div>
     </section>
 
-    <section id="posters-2" class="portfolio-section">
-        <h2>Poster Showcase II</h2>
-   
-        <div class="grid-container-4">
-            <a href="images/009.jpg" target="_blank" rel="noopener noreferrer" class="grid-item item-1">
-                <div class="grid-item-content">
-                    <h3>Liangzhou Life</h3>
-                    <p>Literary Works Poster 2</p>
-                </div>
-                <img src="images/009.jpg" alt="Liangzhou Life" class="poster-img">
-            </a>
+  </main>
 
-            <a href="images/010.jpg" target="_blank" rel="noopener noreferrer" class="grid-item item-2">
-                <div class="grid-item-content">
-                    <h3>A Dream</h3>
-                    <p>Literary Works Poster 3</p>
-                </div>
-                <img src="images/010.jpg" alt="A Dream" class="poster-img">
-            </a>
+  <!-- ================= FOOTER ================= -->
 
-            <a href="images/011.jpg" target="_blank" rel="noopener noreferrer" class="grid-item item-3">
-                <div class="grid-item-content">
-                    <h3>Vibe Hang (1)</h3>
-                    <p>Sample campaign poster — replace with your project details</p>
-                </div>
-                <img src="images/011.jpg" alt="Vibe Hang (1)" class="poster-img">
-            </a>
+  <footer>
+    <div class="wrap footer-inner">
 
-            <a href="images/012.png" target="_blank" rel="noopener noreferrer" class="grid-item item-4">
-                <div class="grid-item-content">
-                    <h3>Vibe Hang (2)</h3>
-                    <p>Sample campaign poster — replace with your project details</p>
-                </div>
-                <img src="images/012.png" alt="Vibe Hang (2)" class="poster-img">
-            </a>
-        </div>
-    </section>
+      <div>
+        © <span id="year"></span> ETHAN DANG. ALL RIGHTS RESERVED.
+      </div>
 
-    <footer id="contact">
-        <p>Contact: Add a professional or course-approved contact method here.</p>
-        
-        <div class="footer-links">
-            <a href="https://www.youtube.com/@acom360-k8" target="_blank" rel="noopener noreferrer">YouTube Channel</a>
-        </div>
-        
-        <p style="color: var(--text-muted); font-size: 0.8rem;">&copy; 2026 ACOM360. Student portfolio template.</p>
-    </footer>
+      <div class="footer-links">
+        <a href="#top">Back to top ↑</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    // MOBILE NAVIGATION MENU
+
+    const menuButton = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('.nav');
+
+    menuButton.addEventListener('click', () => {
+
+      const isOpen = navigation.classList.toggle('open');
+
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+
+    });
+
+    navigation.querySelectorAll('a').forEach(link => {
+
+      link.addEventListener('click', () => {
+
+        navigation.classList.remove('open');
+
+        menuButton.setAttribute('aria-expanded', 'false');
+
+      });
+
+    });
+
+    // AUTOMATIC COPYRIGHT YEAR
+
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+
+  </script>
 
 </body>
 </html>
